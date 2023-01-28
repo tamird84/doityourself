@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>changing CSS</title>
+    <style>
+        .flexParent {
+            width: 100%;
+            display: block;
+        }
+        .box {
+            width: 30%;
+            min-height: 30px;
+            border: 1px solid yellow;
+            margin: 30px auto;
+            background-color: blueviolet;
+            padding: 3px;
+
+        }
+        input {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Be a programmer and change this page to your liking!</h1>
+    <label for="bgColor">Write a background color</label>
+    <input type="text" name="bgColor" id="bgInput" placeholder="i.e red/blue">
+
+    <label for="textColor">Write coclor for text</label>
+    <input type="text" name="textColor" id="colorInput" placeholder="i.e red/blue">
+
+    <label for="textSize">How big should the text be?</label>
+    <input type="text" name="textSize" id="textSize" placeholder="font size i.e 12">
+
+    <label for="flex">Boxes in a row a column?</label>
+    <input type="text" name="flex" id="flex" placeholder="row/column">
+
+    <label for="textInside">what should be written inside the boxes?</label>
+    <input type="text" name="textInside" id="textInside" placeholder="free text">
+
+    <div class="flexParent">
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+    </div>
+
+    <script>
+        var body = document.querySelector("body");
+        var flexbox = document.querySelector(".flexParent");
+        var box = document.querySelectorAll(".box");
+        var bgColor = document.getElementById("bgInput");
+        var textColor = document.getElementById("colorInput");
+        var textSize = document.getElementById("textSize");
+        var flex = document.getElementById("flex");
+        var textInside = document.getElementById("textInside");
+        console.log(bgColor);
+
+        bgColor.addEventListener('keyup', function(event){
+            body.style.backgroundColor = event.target.value;
+        })
+
+        textColor.addEventListener('keyup', function(event){
+            body.style.color = event.target.value;
+        })
+
+        textSize.addEventListener('keyup', function(event){
+            body.style.fontSize = event.target.value + "px";
+        })
+
+        flex.addEventListener('keyup', function(event){
+            if(event.target.value == "row") {
+                flexbox.style.display = "flex";
+            } else {
+                flexbox.style.display = "block";
+            }
+            
+        })
+
+        textInside.addEventListener('keyup', function(event){
+            box[0].innerHTML = event.target.value;
+            box[1].innerHTML = event.target.value;
+            box[2].innerHTML = event.target.value;
+            box[3].innerHTML = event.target.value;
+        })
+
+
+    </script>
+
+    </div>
+
+
+</body>
+</html>
